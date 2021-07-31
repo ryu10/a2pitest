@@ -8,7 +8,8 @@ LD = $(CC65_HOME)/bin/ld65
 DEL = $(RM)
 NULLDEV = /dev/null
 
-SYS = apple2
+SYS = apple2-system
+CONFIG = apple2-asm.cfg
 
 AC.SH = ac.sh
 
@@ -19,25 +20,29 @@ A2PI_VDRIVE2 = $(A2PI_HOME)A2VD2.PO
 A2STOPVD = /usr/bin/a2stopvd
 A2STARTVD = /usr/bin/a2startvd
 
-STARTADDR = 0x0800
-LDFLAGS_apple2 = --start-addr $(STARTADDR)
+LOADADDR = 0x2000
+LDCONFIG = apple2bin.cfg
+LDFLAGS = -C $(LDCONFIG) 
 
 .PHONY: all mostlyclean clean install disk remountVD2
 
 %: %.c
 %: %.s
 
-.c.o:
-	$(CC) $(CFLAGS) -Ors --codesize 500 -T -g -t $(SYS) $<
-	$(AS) $(<:.c=.s) -t $(SYS)
+# .c.o:
+# 	$(CC) $(CFLAGS) -Ors --codesize 500 -T -g -t $(SYS) $<
+# 	$(AS) $(<:.c=.s) -t $(SYS)
 
 .s.o:
-	$(AS) $(ASFLAGS) -t $(SYS) $<
+	$(AS) $(ASFLAGS) $<
 
 .PRECIOUS: %.o
 
+# .o:
+
+
 .o:
-	$(LD) $(LDFLAGS_$(SYS)) $(LDFLAGS) -o $@ -t $(SYS) -m $@.map $^ 
+	$(LD) $(LDFLAGS) -o $@ -m $@.map $^ 
 
 EXELIST = \
   hello
@@ -61,7 +66,7 @@ CREATEDISK = if [ ! -e $(DISKIMAGE) ]; then $(AC.SH) -pro140 $(DISKIMAGE) NONAME
 $(DISKIMAGE): $(EXELIST)
 	$(CREATEDISK)
 	$(AC.SH) -d $(DISKIMAGE) $(PROGNAME)
-	$(AC.SH) -p $(DISKIMAGE) $(PROGNAME) BIN $(STARTADDR) < $(EXELIST)
+	$(AC.SH) -p $(DISKIMAGE) $(PROGNAME) BIN $(LOADADDR) < $(EXELIST)
 
 remountVD2:
 	@echo "starting remountVD2."

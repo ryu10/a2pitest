@@ -1,33 +1,28 @@
 ; hello.s
-.import __STARTUP_LOAD__, __BSS_LOAD__ ; Linker generated
+; .import __STARTUP_LOAD__, __BSS_LOAD__ ; Linker generated
 
-.segment "EXEHDR"
-.addr __STARTUP_LOAD__ ; Start address
-.word __BSS_LOAD__ - __STARTUP_LOAD__ ; Size
+; .segment "EXEHDR"
+; .addr __STARTUP_LOAD__ ; Start address
+; .word __BSS_LOAD__ - __STARTUP_LOAD__ ; Size
 
-.segment "STARTUP"
+.segment "CODE"
 ; Apple ROM Routines
 HOME = $FC58
-VTAB = $FC22
-MVLEFT = $FC10
-MVRIGHT = $FBF4
-WAIT = $FCA8
 COUT = $FDED
-SETNORM = $FE84
 PRBYTE = $FDDA
 PRINTCR = $FC62
 ;
-ENTRY:  jsr HOME
+ENTRY:  
+;        jsr HOME
+        lda #8
+        sta ITR
+@L1:
         jsr PRHELLO
-        ldx #$10
-@L1:    jsr PRINTCR
-        dex
+        lda ITR
+        jsr PRBYTE
+        jsr PRINTCR
+        dec ITR
         bne @L1
-        ldx #$1F ; col 31
-;@L2:    jsr MVRIGHT
-;        dex
-;        bne @L2
-        jsr PRHELLO
         rts
 ;
 PRHELLO:
@@ -42,4 +37,5 @@ PRHELLO:
 
 ;
 .segment "DATA"
-HELLO:  .byt "HELLO"
+HELLO:  .asciiz "HELLO"
+ITR:    .byte 0

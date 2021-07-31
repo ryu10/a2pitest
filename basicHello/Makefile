@@ -29,6 +29,8 @@ $(DISKIMAGE): $(BASICSRC)
 # ln -s /home/pi/github/a2pitest/basicHello/basicTest.po  ./A2VD2.PO
 # a2startvd
 
+clean: 
+
 remountVD2:
 	@echo "starting remountVD2."
 	/usr/bin/a2stopvd
