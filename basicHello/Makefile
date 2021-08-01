@@ -16,9 +16,9 @@ BASICPROG = HELLOTEST
 
 CREATEDISK = if [ ! -e $(DISKNAME) ]; then $(AC.SH) -pro140 $(DISKNAME) NONAME ; fi
 
-.PHONY: all mount remountVD2 clean
+.PHONY: all mount remountVD2 clean disk
 
-all: $(DISKNAME) 
+all disk: $(DISKNAME) 
 
 mount: remountVD2
 
@@ -32,6 +32,8 @@ $(DISKNAME): $(BASICSRC)
 # rm A2VD2.PO
 # ln -s /home/pi/github/a2pitest/basicHello/basicTest.po  ./A2VD2.PO
 # a2startvd
+
+mostlyclean:
 
 clean: 
 	@$(DEL) $(DISKNAME) 2> $(NULLDEV)
