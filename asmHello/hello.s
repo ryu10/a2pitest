@@ -10,7 +10,7 @@
 HOME = $FC58
 COUT = $FDED
 PRBYTE = $FDDA
-PRINTCR = $FC62
+PRINTCR = $FD8E
 ;
 ENTRY:  
 ;        jsr HOME
