@@ -1,0 +1,4 @@
+*.o
+*.po
+# ca65 map file
+*.map
