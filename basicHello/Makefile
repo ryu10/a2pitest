@@ -1,3 +1,6 @@
+DEL = $(RM)
+NULLDEV = /dev/null
+
 AC.SH := $(shell which ac.sh)
 
 CWD := $(shell pwd)
@@ -7,21 +10,22 @@ A2PI_VDRIVE2 = $(A2PI_HOME)A2VD2.PO
 A2STOPVD = /usr/bin/a2stopvd
 A2STARTVD = /usr/bin/a2startvd
 
-DISKIMAGE = basicTest.po
+DISKNAME = basicTest.po
 BASICSRC = helloTest.bas
 BASICPROG = HELLOTEST
 
-CREATEDISK = if [ ! -e $(DISKIMAGE) ]; then $(AC.SH) -pro140 $(DISKIMAGE) NONAME ; fi
+CREATEDISK = if [ ! -e $(DISKNAME) ]; then $(AC.SH) -pro140 $(DISKNAME) NONAME ; fi
 
-.PHONY: remountVD2
+.PHONY: all mount remountVD2 clean disk
 
-all: $(DISKIMAGE) remountVD2
-#all: $(DISKIMAGE)
+all disk: $(DISKNAME) 
 
-$(DISKIMAGE): $(BASICSRC)
+mount: remountVD2
+
+$(DISKNAME): $(BASICSRC)
 	$(CREATEDISK)
-	$(AC.SH) -d $(DISKIMAGE) $(BASICPROG)
-	$(AC.SH) -bas $(DISKIMAGE) $(BASICPROG) < $(BASICSRC)
+	$(AC.SH) -d $(DISKNAME) $(BASICPROG)
+	$(AC.SH) -bas $(DISKNAME) $(BASICPROG) < $(BASICSRC)
 
 # How to re-link the disk image file
 # as2stopvd
@@ -29,13 +33,16 @@ $(DISKIMAGE): $(BASICSRC)
 # ln -s /home/pi/github/a2pitest/basicHello/basicTest.po  ./A2VD2.PO
 # a2startvd
 
+mostlyclean:
+
 clean: 
+	@$(DEL) $(DISKNAME) 2> $(NULLDEV)
 
 remountVD2:
 	@echo "starting remountVD2."
 	/usr/bin/a2stopvd
 	@echo "A2VD2.PO unmounted."
 	rm $(A2PI_VDRIVE2)
-	ln -s $(CWD)/$(DISKIMAGE) $(A2PI_VDRIVE2)
+	ln -s $(CWD)/$(DISKNAME) $(A2PI_VDRIVE2)
 	$(A2STARTVD)
 	@echo "A2VD2.PO remounted."

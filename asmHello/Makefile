@@ -24,7 +24,7 @@ LOADADDR = 0x2000
 LDCONFIG = apple2bin.cfg
 LDFLAGS = -C $(LDCONFIG) 
 
-.PHONY: all mostlyclean clean install disk remountVD2
+.PHONY: all mostlyclean clean disk remountVD2 mount
 
 %: %.c
 %: %.s
@@ -48,6 +48,7 @@ EXELIST = \
   hello
 
 PROGNAME = ASMHELLO
+DISKIMAGE = asmhello.po
 
 all: $(EXELIST)
 
@@ -57,16 +58,18 @@ mostlyclean:
 	@$(DEL) *.lbl *.map *.o 2> $(NULLDEV)
 
 clean: mostlyclean
-	@$(DEL) $(EXELIST) 2> $(NULLDEV)
-
-DISKIMAGE = asmhello.po
+	@$(DEL) $(DISKIMAGE) $(EXELIST) 2> $(NULLDEV)
 
 CREATEDISK = if [ ! -e $(DISKIMAGE) ]; then $(AC.SH) -pro140 $(DISKIMAGE) NONAME ; fi
+
+disk: $(DISKIMAGE)
 
 $(DISKIMAGE): $(EXELIST)
 	$(CREATEDISK)
 	$(AC.SH) -d $(DISKIMAGE) $(PROGNAME)
 	$(AC.SH) -p $(DISKIMAGE) $(PROGNAME) BIN $(LOADADDR) < $(EXELIST)
+
+mount: remountVD2
 
 remountVD2:
 	@echo "starting remountVD2."

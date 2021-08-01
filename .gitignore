@@ -2,3 +2,6 @@
 *.po
 # ca65 map file
 *.map
+
+asmHello/hello
+cHello/hello
