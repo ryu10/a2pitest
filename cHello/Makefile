@@ -22,7 +22,7 @@ A2STARTVD = /usr/bin/a2startvd
 STARTADDR = 0x4000
 LDFLAGS_apple2 = --start-addr $(STARTADDR)
 
-.PHONY: all mostlyclean clean install disk remountVD2
+.PHONY: all mostlyclean clean install disk mount remountVD2
 
 %: %.c
 %: %.s
@@ -43,6 +43,7 @@ EXELIST = \
   hello
 
 PROGNAME = CHELLO
+DISKIMAGE = chello.po
 
 all: $(EXELIST)
 
@@ -52,9 +53,9 @@ mostlyclean:
 	@$(DEL) *.lbl *.map *.o 2> $(NULLDEV)
 
 clean: mostlyclean
-	@$(DEL) $(EXELIST) 2> $(NULLDEV)
+	@$(DEL) $(EXELIST) $(DISKIMAGE) 2> $(NULLDEV)
 
-DISKIMAGE = chello.po
+disk: $(DISKIMAGE)
 
 CREATEDISK = if [ ! -e $(DISKIMAGE) ]; then $(AC.SH) -pro140 $(DISKIMAGE) NONAME ; fi
 
@@ -62,6 +63,8 @@ $(DISKIMAGE): $(EXELIST)
 	$(CREATEDISK)
 	$(AC.SH) -d $(DISKIMAGE) $(PROGNAME)
 	$(AC.SH) -as $(DISKIMAGE) $(PROGNAME) BIN $(STARTADDR) < $(EXELIST)
+
+mount: remountVD2
 
 remountVD2:
 	@echo "starting remountVD2."
