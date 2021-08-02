@@ -17,4 +17,4 @@ make mount
 echo "BRUN ASMHELLO" | a2term
 
 cd ..
-make clean
+#make clean
