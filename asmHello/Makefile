@@ -38,9 +38,6 @@ LDFLAGS = -C $(LDCONFIG)
 
 .PRECIOUS: %.o
 
-# .o:
-
-
 .o:
 	$(LD) $(LDFLAGS) -o $@ -m $@.map $^ 
 

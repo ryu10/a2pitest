@@ -20,23 +20,17 @@ CREATEDISK = if [ ! -e $(DISKNAME) ]; then $(AC.SH) -pro140 $(DISKNAME) NONAME ;
 
 all disk: $(DISKNAME) 
 
-mount: remountVD2
+mostlyclean:
+
+clean: 
+	@$(DEL) $(DISKNAME) 2> $(NULLDEV)
 
 $(DISKNAME): $(BASICSRC)
 	$(CREATEDISK)
 	$(AC.SH) -d $(DISKNAME) $(BASICPROG)
 	$(AC.SH) -bas $(DISKNAME) $(BASICPROG) < $(BASICSRC)
 
-# How to re-link the disk image file
-# as2stopvd
-# rm A2VD2.PO
-# ln -s /home/pi/github/a2pitest/basicHello/basicTest.po  ./A2VD2.PO
-# a2startvd
-
-mostlyclean:
-
-clean: 
-	@$(DEL) $(DISKNAME) 2> $(NULLDEV)
+mount: remountVD2
 
 remountVD2:
 	@echo "starting remountVD2."
