@@ -37,5 +37,5 @@ PRHELLO:
 
 ;
 .segment "DATA"
-HELLO:  .asciiz "HELLO"
+HELLO:  .asciiz "HELLO WORLD "
 ITR:    .byte 0

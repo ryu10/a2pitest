@@ -1,4 +1,4 @@
 
         .export _text
-        _text:  .asciiz "HELLO WORLD!"
+        _text:  .asciiz "HELLO WORLD"
 

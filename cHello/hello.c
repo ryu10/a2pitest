@@ -8,5 +8,3 @@ int main (void)
     printf ("%s\n", text);
     return EXIT_SUCCESS;
 }
-
-
