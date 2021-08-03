@@ -1,0 +1,28 @@
+diff --git a/src/a2pid.c b/src/a2pid.c
+index a3c07b7..2957b47 100755
+--- a/src/a2pid.c
++++ b/src/a2pid.c
+@@ -470,6 +470,7 @@ void main(int argc, char **argv)
+     fd_set readset, openset;
+     char *devtty  = deftty;
+     char *vdrvdir = "/usr/share/a2pi/"; /* default vdrv image directory */
++    char unk_msg[30]; /* for Unknown Event err msg test */
+ 
+     /*
+      * Parse arguments
+@@ -896,8 +897,13 @@ reset:
+        //printf("vclock: resend request %04X\n", a2reqlist->type);
+                             }
+                             break;
++                        case 0x00: /* NULL event, received when Apple II is off */
++                              /* do nothing */
++                            break;
+                         default:
+-                            prlog("a2pid: Unknown Event\n");
++                            // prlog("a2pid: Unknown Event\n");
++                            sprintf(unk_msg, "a2pid: Unknown Event: %0x\n", iopkt[0]);
++                            prlog(unk_msg);
+                             tcflush(a2fd, TCIFLUSH);
+                             //stop = TRUE;
+                     }
+
