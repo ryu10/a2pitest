@@ -14,14 +14,16 @@ PRINTCR = $FD8E
 ;
 ENTRY:  
 ;        jsr HOME
-        lda #8
+        lda #0
         sta ITR
 @L1:
         jsr PRHELLO
         lda ITR
         jsr PRBYTE
         jsr PRINTCR
-        dec ITR
+        inc ITR
+        lda ITR
+        cmp #8
         bne @L1
         rts
 ;
@@ -31,7 +33,7 @@ PRHELLO:
         ora #$80
         jsr COUT
         inx
-        cpx #$05
+        cpx #12
         bne @L1
         rts
 

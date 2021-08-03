@@ -5,6 +5,10 @@ extern const char text[];       /* In text.s */
 
 int main (void)
 {
-    printf ("%s\n", text);
-    return EXIT_SUCCESS;
+  int i;
+  for(i=0;i<8;i++){
+    printf ("%s %d\n", text, i);
+  }
+  printf("\n");
+  return EXIT_SUCCESS;
 }
