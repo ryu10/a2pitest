@@ -2,6 +2,8 @@
 make all
 make disk
 
+echo "CATALOG,S2,D2" | a2term 
+
 cd basicHello
 make mount
 echo "RUN HELLOTEST" | a2term
