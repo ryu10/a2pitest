@@ -1,10 +1,5 @@
 ; hello.s
-; .import __STARTUP_LOAD__, __BSS_LOAD__ ; Linker generated
-
-; .segment "EXEHDR"
-; .addr __STARTUP_LOAD__ ; Start address
-; .word __BSS_LOAD__ - __STARTUP_LOAD__ ; Size
-
+;
 .segment "CODE"
 ; Apple ROM Routines
 HOME = $FC58
@@ -28,7 +23,7 @@ ENTRY:
         rts
 ;
 PRHELLO:
-        ldx #$0
+        ldx #0
 @L1:    lda HELLO,X
         ora #$80
         jsr COUT
@@ -36,7 +31,6 @@ PRHELLO:
         cpx #12
         bne @L1
         rts
-
 ;
 .segment "DATA"
 HELLO:  .asciiz "HELLO WORLD "

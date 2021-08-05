@@ -5,7 +5,7 @@ make disk
 cd basicHello
 make mount
 echo "RUN HELLOTEST,S2,D2" | a2term
-sleep 4
+sleep 2
 
 cd ../cHello
 make mount

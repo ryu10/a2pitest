@@ -8,11 +8,12 @@ This repo, `a2pitest`, should be placed on a Raspberry Pi (3+ or 4 recommended) 
 
 ## Prerequisites
 
-Install following software on a Raspberry Pi which is connected to the Apple2Pi card:
+Install the following on a Raspberry Pi which is connected to the Apple2Pi card:
 
 * [Apple2Pi card & software](https://github.com/dschmenk/apple2pi)
 * [CC65](https://github.com/cc65/cc65)
-* (optional) [VSCode](https://code.visualstudio.com/download) Remote Development
+* [AppleCommander](https://github.com/AppleCommander/AppleCommander)
+* (optional) [VSCode](https://code.visualstudio.com/download) [Remote Development](https://code.visualstudio.com/docs/remote/remote-overview)
 
 ## Quick Run
 ```
