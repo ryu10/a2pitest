@@ -22,8 +22,8 @@ cd a2pitest ; ./runall.sh
 make clean
 ```
 
-## Subdirs
+## src dirs
 
-* `basicHello` : Helloworld sample program in Applesoft Basic
-* `cHello` : Helloworld sample program in  C (CC65)
-* `asmHello` : Helloworld sample program in 6502 Assembly language (CA65)
+* `src/basicHello` : Helloworld sample program in Applesoft Basic
+* `src/cHello` : Helloworld sample program in  C (CC65)
+* `src/asmHello` : Helloworld sample program in 6502 Assembly language (CA65)
