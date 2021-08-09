@@ -2,7 +2,7 @@
 make all
 make disk
 
-cd basicHello
+cd src/basicHello
 make mount
 echo "RUN HELLOTEST,S2,D2" | a2term
 sleep 2
