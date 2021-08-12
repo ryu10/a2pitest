@@ -1,0 +1,3 @@
+[submodule "util/cc65-toolchan-example"]
+	path = util/cc65-toolchan-example
+	url = https://github.com/fo-fo/cc65-toolchain-example.git
