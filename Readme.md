@@ -4,7 +4,7 @@ An experimantal remote development environment for Apple II, using Apple II Pi +
 
 ![VSCode remote](a2pitest_demo.png)
 
-This repo, `a2pitest`, should be placed on a Raspberry Pi (3+ or 4 recommended) connected to [Apple2Pi](https://github.com/dschmenk/apple2pi). By setting up [VSCode Remote Development](https://code.visualstudio.com/docs/remote/remote-overview) on the Raspbery Pi, you can develop Apple II software, in Basic, C or Assembly language, from your modern PC (Win/Mac/Linux).
+This repo, `a2pitest`, should be placed on a Raspberry Pi (3+ or 4 recommended) connected to [Apple2Pi](https://github.com/dschmenk/apple2pi). By setting up [VSCode Remote Development](https://code.visualstudio.com/docs/remote/remote-overview) on the Raspbery Pi, you can develop Apple II software in Basic, C or Assembly language, from your modern PC (Win/Mac/Linux).
 
 ## Prerequisites
 
@@ -23,7 +23,7 @@ cd ..; ./runall.sh
 make clean
 ```
 
-## src dirs
+## Src Dirs
 
 * `src/basicHello` : Helloworld sample in Applesoft Basic
 * `src/cHello` : Helloworld sample in  C (CC65)
