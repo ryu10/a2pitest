@@ -1,6 +1,6 @@
 # A2PiTest 
 
-Apple II remote development with Apple II Pi + Applesoft Basic + CC65.
+An experimantal remote development environment for Apple II, using Apple II Pi + Applesoft Basic + CC65.
 
 ![VSCode remote](a2pitest_demo.png)
 
@@ -17,13 +17,14 @@ Install the following on a Raspberry Pi which is connected to the Apple2Pi card:
 
 ## Quick Run
 ```
-(TBD) installvdtools
-cd a2pitest ; ./runall.sh
+git clone https://github.com/ryu10/a2pitest.git; cd a2pitest
+(TBD) cd a2pi-update; sudo ./installa2startvd.sh
+cd ..; ./runall.sh
 make clean
 ```
 
 ## src dirs
 
-* `src/basicHello` : Helloworld sample program in Applesoft Basic
-* `src/cHello` : Helloworld sample program in  C (CC65)
-* `src/asmHello` : Helloworld sample program in 6502 Assembly language (CA65)
+* `src/basicHello` : Helloworld sample in Applesoft Basic
+* `src/cHello` : Helloworld sample in  C (CC65)
+* `src/asmHello` : Helloworld sample in 6502 Assembly language (CA65)
