@@ -40,12 +40,16 @@ LDFLAGS_apple2 = --start-addr $(STARTADDR)
 	$(LD) $(LDFLAGS_$(SYS)) $(LDFLAGS) -o $@ -t $(SYS) -m $@.map $^ $(SYS).lib
 
 EXELIST = \
-  hello
+  build/CHELLO
+
 
 PROGNAME = CHELLO
 DISKIMAGE = chello.po
 
 all: $(EXELIST)
+
+${EXELIST}:
+	./build.sh
 
 hello: hello.o text.o
 
@@ -54,6 +58,8 @@ mostlyclean:
 
 clean: mostlyclean
 	@$(DEL) $(EXELIST) $(DISKIMAGE) 2> $(NULLDEV)
+	./build.sh clean
+	rm -rf ./build
 
 disk: $(DISKIMAGE)
 
