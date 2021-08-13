@@ -1,9 +1,5 @@
-CC65_HOME = /usr/local/
-
-AS = $(CC65_HOME)/bin/ca65
-CC = $(CC65_HOME)/bin/cc65
-CL = $(CC65_HOME)/bin/cl65
-LD = $(CC65_HOME)/bin/ld65
+# Makefile for disk / mount
+# cc/as/ld are done in CMake/ninja via ./build.sh
 
 DEL = $(RM)
 NULLDEV = /dev/null
@@ -24,24 +20,8 @@ LDFLAGS_apple2 = --start-addr $(STARTADDR)
 
 .PHONY: all mostlyclean clean install disk mount remountVD2
 
-%: %.c
-%: %.s
-
-.c.o:
-	$(CC) $(CFLAGS) -Ors --codesize 500 -T -g -t $(SYS) $<
-	$(AS) $(<:.c=.s) -t $(SYS)
-
-.s.o:
-	$(AS) $(ASFLAGS) -t $(SYS) $<
-
-.PRECIOUS: %.o
-
-.o:
-	$(LD) $(LDFLAGS_$(SYS)) $(LDFLAGS) -o $@ -t $(SYS) -m $@.map $^ $(SYS).lib
-
 EXELIST = \
   build/CHELLO
-
 
 PROGNAME = CHELLO
 DISKIMAGE = chello.po
@@ -51,7 +31,6 @@ all: $(EXELIST)
 ${EXELIST}:
 	./build.sh
 
-hello: hello.o text.o
 
 mostlyclean:
 	@$(DEL) *.lbl *.map *.o 2> $(NULLDEV)
