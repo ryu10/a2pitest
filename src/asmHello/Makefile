@@ -15,8 +15,6 @@ AC.SH = ac.sh
 
 CWD := $(shell pwd)
 
-A2PI_HOME = /usr/share/a2pi/
-
 LOADADDR = 0x2000
 LDCONFIG = apple2bin.cfg
 LDFLAGS = -C $(LDCONFIG) 
