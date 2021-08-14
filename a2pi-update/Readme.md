@@ -20,3 +20,11 @@ And then copy the newly created a2pid to the original install location (e.g. `/u
 
 ## ac.sh
 A shell script command file equivalent to `java -jar ac.jar $*`.  Copy this file to where ac.jar is installed (e.g. `/usr/local/bin/ac.sh`). The path (`/usr/local/bin`) should be included in path.
+
+## a2reset.py
+
+With the following wiring, you can reset the Apple II from the Raspberry Pi. 
+
+1. Pull down gpio 17 (header pin #11) to GND via a 3.3K resistor.
+2. Connect gpio 17 to a NOT gate on LS04. Connect the output of the NOT to Apple II *Reset.
+3. run a2reset.py
