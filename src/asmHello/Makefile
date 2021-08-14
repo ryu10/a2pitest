@@ -16,9 +16,6 @@ AC.SH = ac.sh
 CWD := $(shell pwd)
 
 A2PI_HOME = /usr/share/a2pi/
-A2PI_VDRIVE2 = $(A2PI_HOME)A2VD2.PO
-A2STOPVD = /usr/bin/a2stopvd
-A2STARTVD = /usr/bin/a2startvd
 
 LOADADDR = 0x2000
 LDCONFIG = apple2bin.cfg

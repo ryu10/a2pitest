@@ -3,8 +3,8 @@ The host system is: Linux - 5.10.52-v7+ - armv7l
 Determining if the C compiler works passed with the following output:
 Change Dir: /home/pi/github/a2pitest/src/cHello/build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/local/bin/ninja cmTC_062ce && [1/2] Building C object CMakeFiles/cmTC_062ce.dir/testCCompiler.c.obj
-[2/2] Linking C executable cmTC_062ce
+Run Build Command(s):/usr/local/bin/ninja cmTC_340c6 && [1/2] Building C object CMakeFiles/cmTC_340c6.dir/testCCompiler.c.obj
+[2/2] Linking C executable cmTC_340c6
 
 
 

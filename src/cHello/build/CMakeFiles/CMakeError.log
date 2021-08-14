@@ -1,9 +1,9 @@
 Detecting C compiler ABI info failed to compile with the following output:
 Change Dir: /home/pi/github/a2pitest/src/cHello/build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/local/bin/ninja cmTC_4d0f1 && [1/2] Building C object CMakeFiles/cmTC_4d0f1.dir/CMakeCCompilerABI.c.obj
-FAILED: CMakeFiles/cmTC_4d0f1.dir/CMakeCCompilerABI.c.obj 
-/usr/local/bin/cl65   -v --create-dep CMakeFiles/cmTC_4d0f1.dir/CMakeCCompilerABI.c.obj.d -o CMakeFiles/cmTC_4d0f1.dir/CMakeCCompilerABI.c.obj   -c /usr/share/cmake-3.16/Modules/CMakeCCompilerABI.c
+Run Build Command(s):/usr/local/bin/ninja cmTC_01b47 && [1/2] Building C object CMakeFiles/cmTC_01b47.dir/CMakeCCompilerABI.c.obj
+FAILED: CMakeFiles/cmTC_01b47.dir/CMakeCCompilerABI.c.obj 
+/usr/local/bin/cl65   -v --create-dep CMakeFiles/cmTC_01b47.dir/CMakeCCompilerABI.c.obj.d -o CMakeFiles/cmTC_01b47.dir/CMakeCCompilerABI.c.obj   -c /usr/share/cmake-3.16/Modules/CMakeCCompilerABI.c
 /usr/share/cmake-3.16/Modules/CMakeCCompilerABI.c:25: Fatal: Cannot open output file '/usr/share/cmake-3.16/Modules/CMakeCCompilerABI.s': Permission denied
 Input: 
 Opened include file '/usr/share/cmake-3.16/Modules/CMakeCompilerABI.h'

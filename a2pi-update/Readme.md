@@ -20,15 +20,3 @@ And then copy the newly created a2pid to the original install location (e.g. `/u
 
 ## ac.sh
 A shell script command file equivalent to `java -jar ac.jar $*`.  Copy this file to where ac.jar is installed (e.g. `/usr/local/bin/ac.sh`). The path (`/usr/local/bin`) should be included in path.
-
-## installa2startvd.sh
-
-Installs two commands: `a2startvd` and `a2stopvd` to where `a2term` is installed (e.g. `/usr/bin`).
-
-How to install: Within this directory (`a2pi-update`), run:
-```
-sudo ./installa2startvd.sh
-```
-Enter the root password when prompted.
-
-`a2startvd` and `a2stopvd` mount and unmount the ProDOS images after/before AppleCommander (ac.sh) manipulates them.
