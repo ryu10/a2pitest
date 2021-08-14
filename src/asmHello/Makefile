@@ -1,57 +1,39 @@
-CC65_HOME = /usr/local/
+# Makefile for asmHello
+# cc/as/ld are done in CMake/ninja via ./build.sh
 
-AS = $(CC65_HOME)/bin/ca65
-CC = $(CC65_HOME)/bin/cc65
-CL = $(CC65_HOME)/bin/cl65
-LD = $(CC65_HOME)/bin/ld65
-
+# commands and params
 DEL = $(RM)
 NULLDEV = /dev/null
-
 SYS = apple2-system
-CONFIG = apple2-asm.cfg
-
 AC.SH = ac.sh
-
-CWD := $(shell pwd)
-
+CWD = $(shell pwd)
 LOADADDR = 0x2000
-LDCONFIG = apple2bin.cfg
-LDFLAGS = -C $(LDCONFIG) 
-
-.PHONY: all mostlyclean clean disk
-
-%: %.c
-%: %.s
-
-# .c.o:
-# 	$(CC) $(CFLAGS) -Ors --codesize 500 -T -g -t $(SYS) $<
-# 	$(AS) $(<:.c=.s) -t $(SYS)
-
-.s.o:
-	$(AS) $(ASFLAGS) $<
-
-.PRECIOUS: %.o
-
-.o:
-	$(LD) $(LDFLAGS) -o $@ -m $@.map $^ 
-
-EXELIST = \
-  hello
-
 PROGNAME = ASMHELLO
 DISKIMAGE = asmhello.po
 
+# phony targets
+.PHONY: all mostlyclean clean disk
+
+# target file list
+EXELIST = \
+  build/${PROGNAME}
+
+# all
 all: $(EXELIST)
 
-hello: hello.o
+$(EXELIST):
+	./build.sh
 
+# clean
 mostlyclean:
 	@$(DEL) *.lbl *.map *.o 2> $(NULLDEV)
 
 clean: mostlyclean
 	@$(DEL) $(DISKIMAGE) $(EXELIST) 2> $(NULLDEV)
+	./build.sh clean
+	rm -rf ./build
 
+# disk
 CREATEDISK = if [ ! -e $(DISKIMAGE) ]; then $(AC.SH) -pro140 $(DISKIMAGE) NONAME ; fi
 
 disk: $(DISKIMAGE)

@@ -1,1 +1,0 @@
-/usr/share/a2pi/A2VD/home/pi/github/a2pitest/src/basicHello/basecTest.po.PO

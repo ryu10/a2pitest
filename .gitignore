@@ -3,6 +3,6 @@
 # ca65 map file
 *.map
 
-asmHello/hello
-cHello/hello
-cHello/hello.s
+src/asmHello/build
+src/cHello/hello/build
+src/cHello/hello.s/build

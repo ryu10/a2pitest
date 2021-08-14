@@ -1,32 +1,30 @@
-# Makefile for disk / mount
+# Makefile for cHello
 # cc/as/ld are done in CMake/ninja via ./build.sh
 
+# commands and params
 DEL = $(RM)
 NULLDEV = /dev/null
-
 SYS = apple2
-
 AC.SH = ac.sh
-
-CWD := $(shell pwd)
-
+CWD = $(shell pwd)
 STARTADDR = 0x4000
-LDFLAGS_apple2 = --start-addr $(STARTADDR)
-
-.PHONY: all mostlyclean clean install disk 
-
-EXELIST = \
-  build/CHELLO
-
 PROGNAME = CHELLO
 DISKIMAGE = chello.po
 
+# phony targets
+.PHONY: all mostlyclean clean install disk 
+
+# target file list
+EXELIST = \
+  build/${PROGNAME}
+
+# all
 all: $(EXELIST)
 
 ${EXELIST}:
 	./build.sh
 
-
+# clean
 mostlyclean:
 	@$(DEL) *.lbl *.map *.o 2> $(NULLDEV)
 
@@ -35,9 +33,10 @@ clean: mostlyclean
 	./build.sh clean
 	rm -rf ./build
 
-disk: $(DISKIMAGE)
-
+# disk
 CREATEDISK = if [ ! -e $(DISKIMAGE) ]; then $(AC.SH) -pro140 $(DISKIMAGE) NONAME ; fi
+
+disk: $(DISKIMAGE)
 
 $(DISKIMAGE): $(EXELIST)
 	$(CREATEDISK)
