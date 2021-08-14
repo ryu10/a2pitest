@@ -18,7 +18,7 @@ A2STARTVD = /usr/bin/a2startvd
 STARTADDR = 0x4000
 LDFLAGS_apple2 = --start-addr $(STARTADDR)
 
-.PHONY: all mostlyclean clean install disk mount remountVD2
+.PHONY: all mostlyclean clean install disk 
 
 EXELIST = \
   build/CHELLO
@@ -48,14 +48,3 @@ $(DISKIMAGE): $(EXELIST)
 	$(CREATEDISK)
 	$(AC.SH) -d $(DISKIMAGE) $(PROGNAME)
 	$(AC.SH) -as $(DISKIMAGE) $(PROGNAME) BIN $(STARTADDR) < $(EXELIST)
-
-mount: remountVD2
-
-remountVD2:
-	@echo "starting remountVD2."
-	/usr/bin/a2stopvd
-	@echo "A2VD2.PO unmounted."
-	rm $(A2PI_VDRIVE2)
-	ln -s $(CWD)/$(DISKIMAGE) $(A2PI_VDRIVE2)
-	$(A2STARTVD)
-	@echo "A2VD2.PO remounted."

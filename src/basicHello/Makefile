@@ -16,7 +16,7 @@ BASICPROG = HELLOTEST
 
 CREATEDISK = if [ ! -e $(DISKNAME) ]; then $(AC.SH) -pro140 $(DISKNAME) NONAME ; fi
 
-.PHONY: all mount remountVD2 clean disk
+.PHONY: all clean disk
 
 all disk: $(DISKNAME) 
 
@@ -30,13 +30,3 @@ $(DISKNAME): $(BASICSRC)
 	$(AC.SH) -d $(DISKNAME) $(BASICPROG)
 	$(AC.SH) -bas $(DISKNAME) $(BASICPROG) < $(BASICSRC)
 
-mount: remountVD2
-
-remountVD2:
-	@echo "starting remountVD2."
-	/usr/bin/a2stopvd
-	@echo "A2VD2.PO unmounted."
-	rm $(A2PI_VDRIVE2)
-	ln -s $(CWD)/$(DISKNAME) $(A2PI_VDRIVE2)
-	$(A2STARTVD)
-	@echo "A2VD2.PO remounted."

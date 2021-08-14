@@ -24,7 +24,7 @@ LOADADDR = 0x2000
 LDCONFIG = apple2bin.cfg
 LDFLAGS = -C $(LDCONFIG) 
 
-.PHONY: all mostlyclean clean disk remountVD2 mount
+.PHONY: all mostlyclean clean disk
 
 %: %.c
 %: %.s
@@ -65,14 +65,3 @@ $(DISKIMAGE): $(EXELIST)
 	$(CREATEDISK)
 	$(AC.SH) -d $(DISKIMAGE) $(PROGNAME)
 	$(AC.SH) -p $(DISKIMAGE) $(PROGNAME) BIN $(LOADADDR) < $(EXELIST)
-
-mount: remountVD2
-
-remountVD2:
-	@echo "starting remountVD2."
-	/usr/bin/a2stopvd
-	@echo "A2VD2.PO unmounted."
-	rm $(A2PI_VDRIVE2)
-	ln -s $(CWD)/$(DISKIMAGE) $(A2PI_VDRIVE2)
-	$(A2STARTVD)
-	@echo "A2VD2.PO remounted."
