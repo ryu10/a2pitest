@@ -26,5 +26,5 @@ $(DISKNAME): $(BASICSRC)
 # clean
 mostlyclean:
 
-clean: 
+clean cleanall: 
 	@$(DEL) $(DISKNAME) 2> $(NULLDEV)
