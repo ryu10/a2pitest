@@ -1,3 +1,0 @@
-/home/pi/github/a2pitest/src/cHello/build/CMakeFiles/rebuild_cache.dir
-/home/pi/github/a2pitest/src/cHello/build/CMakeFiles/a2pitest_chello.dir
-/home/pi/github/a2pitest/src/cHello/build/CMakeFiles/edit_cache.dir
