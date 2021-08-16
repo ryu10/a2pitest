@@ -1,8 +1,6 @@
-diff --git a/src/a2pid.c b/src/a2pid.c
-index a3c07b7..2957b47 100755
---- a/src/a2pid.c
-+++ b/src/a2pid.c
-@@ -470,6 +470,7 @@ void main(int argc, char **argv)
+--- src/a2pid.c	2021-08-16 01:50:14.596595180 -0700
++++ a2pid.c	2021-08-16 01:51:22.776233603 -0700
+@@ -470,6 +470,7 @@
      fd_set readset, openset;
      char *devtty  = deftty;
      char *vdrvdir = "/usr/share/a2pi/"; /* default vdrv image directory */
@@ -10,8 +8,8 @@ index a3c07b7..2957b47 100755
  
      /*
       * Parse arguments
-@@ -896,8 +897,13 @@ reset:
-        //printf("vclock: resend request %04X\n", a2reqlist->type);
+@@ -896,8 +897,13 @@
+ 				//printf("vclock: resend request %04X\n", a2reqlist->type);
                              }
                              break;
 +                        case 0x00: /* NULL event, received when Apple II is off */
@@ -25,4 +23,3 @@ index a3c07b7..2957b47 100755
                              tcflush(a2fd, TCIFLUSH);
                              //stop = TRUE;
                      }
-
