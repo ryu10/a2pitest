@@ -17,12 +17,13 @@ Install the following on a Raspberry Pi which is connected to the Apple2Pi card:
 
 ## Quick Run
 ```
-git clone https://github.com/ryu10/a2pitest.git; cd a2pitest
+git clone https://github.com/ryu10/a2pitest.git
+cd a2pitest
 ./runall.sh
 ./runall.sh cleanall
 ```
 
-## Src Dirs
+## Source Directories
 
 * `src/basicHello` : Helloworld sample in Applesoft Basic
 * `src/cHello` : Helloworld sample in  C (CC65)
