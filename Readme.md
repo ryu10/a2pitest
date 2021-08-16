@@ -1,6 +1,6 @@
 # A2PiTest 
 
-An experimantal remote development environment for Apple II, using Apple II Pi + Applesoft Basic + CC65.
+An experimantal remote development environment for Apple IIe, using Apple II Pi + Applesoft Basic + CC65.
 
 ![VSCode remote](a2pitest_demo.png)
 
@@ -18,9 +18,8 @@ Install the following on a Raspberry Pi which is connected to the Apple2Pi card:
 ## Quick Run
 ```
 git clone https://github.com/ryu10/a2pitest.git; cd a2pitest
-(TBD) cd a2pi-update; sudo ./installa2startvd.sh
-cd ..; ./runall.sh
-make clean
+./runall.sh
+./runall.sh cleanall
 ```
 
 ## Src Dirs
