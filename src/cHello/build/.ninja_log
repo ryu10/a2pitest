@@ -1,0 +1,4 @@
+# ninja log v5
+7	34	1629075092890928001	CMakeFiles/a2pitest_chello.dir/src/text.s.obj	a8c3c492aeba904a
+3	43	1629075092910928088	CMakeFiles/a2pitest_chello.dir/src/hello.c.obj	151a512592902d7
+44	154	1629075093020928566	CHELLO	1a8c63a57b43e7c3
