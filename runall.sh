@@ -17,7 +17,7 @@ if [ $# -eq 0 ] || [ $1 = all ]; then
   # mount
   a2setvd 2 `pwd`/build/chello.po
   # brun
-  echo "BRUN CHELLO" | a2term
+  echo "BRUN CHELLO,S2,D2" | a2term
 
   sleep 2
 
@@ -26,7 +26,7 @@ if [ $# -eq 0 ] || [ $1 = all ]; then
   ./build.sh all
   # mount
   a2setvd 2 `pwd`/build/asmhello.po
-  echo "BRUN ASMHELLO" | a2term
+  echo "BRUN ASMHELLO,S2,D2" | a2term
 
   cd ..
   exit 0
