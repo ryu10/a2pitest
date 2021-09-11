@@ -4,5 +4,5 @@
 *.map
 
 src/asmHello/build
-src/cHello/hello/build
-src/cHello/hello.s/build
+src/cHello/build
+src/cHello/build

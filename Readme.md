@@ -10,7 +10,9 @@ It supports auto build with [cc65-toolchain-example](https://github.com/fo-fo/cc
 
 Note: after cloning this repository, run the following command to download the submodule:
 
-```git submodule update -i```
+```
+git submodule update -i
+```
 
 (```git clone``` does not do this automatically)
 
